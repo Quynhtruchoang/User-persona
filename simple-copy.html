@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Personas - Bo Agent</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .header-gradient { background: linear-gradient(135deg, #e8956f 0%, #1a3a3a 50%, #1a3a3a 100%); }
+        .active-tab { border-bottom: 3px solid #1a3a3a; color: #1a3a3a; background: white; }
+        .tab { padding: 12px 24px; cursor: pointer; border-bottom: 3px solid transparent; }
+        .tab:hover { background: #f5f5f5; }
+        .persona { display: none; }
+        .persona.active { display: block; }
+        .tag { background: #e6eded; color: #1a3a3a; padding: 4px 12px; border-radius: 20px; font-size: 12px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+        .dot-filled { background: #1a3a3a; }
+        .dot-empty { background: #e5e7eb; }
+    </style>
+</head>
+<body class="bg-gray-100 p-6">
+
+<!-- Tabs -->
+<div class="max-w-4xl mx-auto mb-4 flex border-b border-gray-300 bg-white">
+    <div class="tab active-tab" onclick="showPersona(0)">I-team</div>
+    <div class="tab" onclick="showPersona(1)">Mechan</div>
+    <div class="tab" onclick="showPersona(2)">Sonic</div>
+    <div class="tab" onclick="showPersona(3)">FittinQ</div>
+</div>
+
+<!-- Persona 1: Jan -->
+<div class="persona active max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="header-gradient px-8 py-4 flex items-center gap-6">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=face" class="w-24 h-24 rounded-full border-4 border-white object-cover">
+        <div class="text-white">
+            <h2 class="text-3xl font-bold">Jan de Vries</h2>
+            <p class="text-xl opacity-90">Operations Manager</p>
+            <p class="text-sm opacity-75">I-team • Industrial Cleaning Solutions</p>
+        </div>
+        <div class="ml-auto text-right text-white">
+            <div class="text-4xl font-bold">10-15 min</div>
+            <div class="text-sm opacity-75">per incident</div>
+        </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4 p-4">
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Profile</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li>• Manages daily WMS operations</li>
+                <li>• Coordinates office & warehouse</li>
+                <li>• 8 months WMS experience</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">AI Experience</p>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-empty"></span>
+                <span class="dot dot-empty"></span>
+                <span class="dot dot-empty"></span>
+                <span class="dot dot-empty"></span>
+                <p class="text-xs text-gray-500 mt-1">None</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Goals</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-teal-700">✓</span> Optimize picking routes</li>
+                <li><span class="text-teal-700">✓</span> Track serial numbers accurately</li>
+                <li><span class="text-teal-700">✓</span> Reduce search time</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Trust Approach</p>
+                <p class="text-sm">Review first, then approve</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Frustrations</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-red-400">✗</span> 10-15 min finding serial numbers</li>
+                <li><span class="text-red-400">✗</span> Multi-screen navigation</li>
+                <li><span class="text-red-400">✗</span> Depends on developers</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Interaction</p>
+                <p class="text-sm">Text preferred in office</p>
+            </div>
+        </div>
+    </div>
+    <div class="px-8 py-3 bg-gray-50 border-t">
+        <p class="text-sm text-gray-600 italic">"Finding serial numbers for assembled components can take 10-15 minutes sometimes."</p>
+    </div>
+    <div class="px-8 py-3 bg-gray-100 flex gap-2 flex-wrap">
+        <span class="text-xs font-bold text-gray-500 uppercase mr-2">Bo Agent Needs:</span>
+        <span class="tag">Serial tracking</span>
+        <span class="tag">Assembly traceability</span>
+        <span class="tag">Human approval</span>
+        <span class="tag">Internal-only</span>
+    </div>
+</div>
+
+<!-- Persona 2: Pieter -->
+<div class="persona max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="header-gradient px-8 py-4 flex items-center gap-6">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face" class="w-24 h-24 rounded-full border-4 border-white object-cover">
+        <div class="text-white">
+            <h2 class="text-3xl font-bold">Pieter van den Berg</h2>
+            <p class="text-xl opacity-90">Business Analyst</p>
+            <p class="text-sm opacity-75">Mechan • Agricultural Machinery Parts</p>
+        </div>
+        <div class="ml-auto text-right text-white">
+            <div class="text-4xl font-bold">15 min</div>
+            <div class="text-sm opacity-75">per day</div>
+        </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4 p-4">
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Profile</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li>• Builds KPI dashboards</li>
+                <li>• Supports warehouse planning</li>
+                <li>• 16 months WMS experience</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">AI Experience</p>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-empty"></span>
+                <span class="dot dot-empty"></span>
+                <span class="dot dot-empty"></span>
+                <p class="text-xs text-gray-500 mt-1">Limited (ChatGPT)</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Goals</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-teal-700">✓</span> Single-screen data view</li>
+                <li><span class="text-teal-700">✓</span> Real-time priority guidance</li>
+                <li><span class="text-teal-700">✓</span> Reduce manual data collection</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Trust Approach</p>
+                <p class="text-sm">100% accuracy or nothing</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Frustrations</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-red-400">✗</span> Switch between 3-4 screens</li>
+                <li><span class="text-red-400">✗</span> Inbound vs outbound conflicts</li>
+                <li><span class="text-red-400">✗</span> Manual Access database work</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Interaction</p>
+                <p class="text-sm">Text in Dutch language</p>
+            </div>
+        </div>
+    </div>
+    <div class="px-8 py-3 bg-gray-50 border-t">
+        <p class="text-sm text-gray-600 italic">"If I can ask one question and it will go through three or four screens—that would be the most benefit."</p>
+    </div>
+    <div class="px-8 py-3 bg-gray-100 flex gap-2 flex-wrap">
+        <span class="text-xs font-bold text-gray-500 uppercase mr-2">Bo Agent Needs:</span>
+        <span class="tag">Multi-screen query</span>
+        <span class="tag">Priority switching</span>
+        <span class="tag">Dutch language</span>
+        <span class="tag">Data aggregation</span>
+    </div>
+</div>
+
+<!-- Persona 3: Thomas -->
+<div class="persona max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="header-gradient px-8 py-4 flex items-center gap-6">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" class="w-24 h-24 rounded-full border-4 border-white object-cover">
+        <div class="text-white">
+            <h2 class="text-3xl font-bold">Thomas Bakker</h2>
+            <p class="text-xl opacity-90">Warehouse Manager</p>
+            <p class="text-sm opacity-75">Sonic • Audio Equipment</p>
+        </div>
+        <div class="ml-auto text-right text-white">
+            <div class="text-4xl font-bold">1 hour</div>
+            <div class="text-sm opacity-75">complex investigations</div>
+        </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4 p-4">
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Profile</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li>• Manages warehouse operations</li>
+                <li>• Investigates system issues</li>
+                <li>• Experienced WMS user</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">AI Experience</p>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-empty"></span>
+                <p class="text-xs text-gray-500 mt-1">Sophisticated</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Goals</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-teal-700">✓</span> Understand why things happen</li>
+                <li><span class="text-teal-700">✓</span> Quick root cause analysis</li>
+                <li><span class="text-teal-700">✓</span> Track who changed what</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Trust Approach</p>
+                <p class="text-sm">High for analysis tasks</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Frustrations</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-red-400">✗</span> Up to 1 hour investigations</li>
+                <li><span class="text-red-400">✗</span> Data intermingled in screens</li>
+                <li><span class="text-red-400">✗</span> No clear user attribution</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Interaction</p>
+                <p class="text-sm">Visual explanations</p>
+            </div>
+        </div>
+    </div>
+    <div class="px-8 py-3 bg-gray-50 border-t">
+        <p class="text-sm text-gray-600 italic">"Why is that happening? That's basically the bottom line. Sometimes it takes an hour to find the real reason."</p>
+    </div>
+    <div class="px-8 py-3 bg-gray-100 flex gap-2 flex-wrap">
+        <span class="text-xs font-bold text-gray-500 uppercase mr-2">Bo Agent Needs:</span>
+        <span class="tag">Root cause analysis</span>
+        <span class="tag">User attribution</span>
+        <span class="tag">Business rules</span>
+        <span class="tag">Visualization</span>
+    </div>
+</div>
+
+<!-- Persona 4: Emma -->
+<div class="persona max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="header-gradient px-8 py-4 flex items-center gap-6">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=face" class="w-24 h-24 rounded-full border-4 border-white object-cover">
+        <div class="text-white">
+            <h2 class="text-3xl font-bold">Emma Jansen</h2>
+            <p class="text-xl opacity-90">Process Engineer</p>
+            <p class="text-sm opacity-75">FittinQ • Distribution & Logistics</p>
+        </div>
+        <div class="ml-auto text-right text-white">
+            <div class="text-4xl font-bold">30+ min</div>
+            <div class="text-sm opacity-75">Excel preparation</div>
+        </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4 p-4">
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Profile</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li>• Analyzes warehouse processes</li>
+                <li>• Calculates replenishment settings</li>
+                <li>• Works across multiple systems</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">AI Experience</p>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-empty"></span>
+                <span class="dot dot-empty"></span>
+                <p class="text-xs text-gray-500 mt-1">Moderate</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Goals</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-teal-700">✓</span> Automate calculations</li>
+                <li><span class="text-teal-700">✓</span> Detect bottlenecks early</li>
+                <li><span class="text-teal-700">✓</span> Reduce Excel dependency</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Trust Approach</p>
+                <p class="text-sm">Verify before use</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Frustrations</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-red-400">✗</span> Manual data downloads</li>
+                <li><span class="text-red-400">✗</span> Excel formula building</li>
+                <li><span class="text-red-400">✗</span> Late bottleneck detection</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Interaction</p>
+                <p class="text-sm">Explainable outputs</p>
+            </div>
+        </div>
+    </div>
+    <div class="px-8 py-3 bg-gray-50 border-t">
+        <p class="text-sm text-gray-600 italic">"Why do I have to make these calculations myself when all the data is already in the system?"</p>
+    </div>
+    <div class="px-8 py-3 bg-gray-100 flex gap-2 flex-wrap">
+        <span class="text-xs font-bold text-gray-500 uppercase mr-2">Bo Agent Needs:</span>
+        <span class="tag">Auto calculations</span>
+        <span class="tag">Bottleneck alerts</span>
+        <span class="tag">Multi-system access</span>
+        <span class="tag">Explainable AI</span>
+    </div>
+</div>
+
+<script>
+function showPersona(index) {
+    // Hide all personas
+    document.querySelectorAll('.persona').forEach(p => p.classList.remove('active'));
+    // Remove active from all tabs
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active-tab'));
+    // Show selected persona
+    document.querySelectorAll('.persona')[index].classList.add('active');
+    // Activate selected tab
+    document.querySelectorAll('.tab')[index].classList.add('active-tab');
+}
+</script>
+
+</body>
+</html>

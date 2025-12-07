@@ -1,544 +1,315 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warehouse AI Agent - User Personas</title>
+    <title>User Personas - Bo Agent</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        }
-        .persona-card {
-            transition: all 0.3s ease;
-        }
-        .persona-card:hover {
-            transform: scale(1.02);
-        }
-        .selected {
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-        @media print {
-            .no-print { display: none; }
-            body { background: white; }
-        }
+        .header-gradient { background: linear-gradient(135deg, #e8956f 0%, #1a3a3a 50%, #1a3a3a 100%); }
+        .active-tab { border-bottom: 3px solid #1a3a3a; color: #1a3a3a; background: white; }
+        .tab { padding: 12px 24px; cursor: pointer; border-bottom: 3px solid transparent; }
+        .tab:hover { background: #f5f5f5; }
+        .persona { display: none; }
+        .persona.active { display: block; }
+        .tag { background: #e6eded; color: #1a3a3a; padding: 4px 12px; border-radius: 20px; font-size: 12px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+        .dot-filled { background: #1a3a3a; }
+        .dot-empty { background: #e5e7eb; }
     </style>
 </head>
-<body class="bg-gray-50">
-    <div class="w-full max-w-7xl mx-auto p-6">
-        <!-- Header -->
-        <div class="mb-8 text-center">
-            <h1 class="text-4xl font-bold text-gray-900 mb-2">Warehouse AI Agent User Personas</h1>
-            <p class="text-gray-600">Based on interviews with I-team, Mechan, and Sonic</p>
-        </div>
+<body class="bg-gray-100 p-6">
 
-        <!-- Persona Selection Buttons -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8" id="persona-selector">
-            <!-- Buttons will be inserted here -->
-        </div>
+<!-- Tabs -->
+<div class="max-w-4xl mx-auto mb-4 flex border-b border-gray-300 bg-white">
+    <div class="tab active-tab" onclick="showPersona(0)">I-team</div>
+    <div class="tab" onclick="showPersona(1)">Mechan</div>
+    <div class="tab" onclick="showPersona(2)">Sonic</div>
+    <div class="tab" onclick="showPersona(3)">FittinQ</div>
+</div>
 
-        <!-- Main Persona Display -->
-        <div id="persona-display">
-            <!-- Persona content will be inserted here -->
+<!-- Persona 1: Jan -->
+<div class="persona active max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="header-gradient px-8 py-4 flex items-center gap-6">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=face" class="w-24 h-24 rounded-full border-4 border-white object-cover">
+        <div class="text-white">
+            <h2 class="text-3xl font-bold">Jan de Vries, 50</h2>
+            <p class="text-xl opacity-90">Operations Manager</p>
+            <p class="text-sm opacity-75">I-team • Industrial Cleaning Solutions</p>
         </div>
-
-        <!-- Comparison Table -->
-        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6">Cross-Persona Comparison</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full">
-                    <thead>
-                        <tr class="border-b-2 border-gray-200">
-                            <th class="text-left p-3 font-semibold text-gray-700">Dimension</th>
-                            <th class="text-left p-3 font-semibold text-purple-700">I-team</th>
-                            <th class="text-left p-3 font-semibold text-green-700">Mechan</th>
-                            <th class="text-left p-3 font-semibold text-orange-700">Sonic</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b border-gray-100">
-                            <td class="p-3 font-semibold text-gray-700">Primary Focus</td>
-                            <td class="p-3 text-sm">Optimization & Inventory</td>
-                            <td class="p-3 text-sm">Workflow & Real-time</td>
-                            <td class="p-3 text-sm">Analysis & Understanding</td>
-                        </tr>
-                        <tr class="border-b border-gray-100">
-                            <td class="p-3 font-semibold text-gray-700">Search Time</td>
-                            <td class="p-3 text-sm">10-15 min</td>
-                            <td class="p-3 text-sm">10-15 min daily</td>
-                            <td class="p-3 text-sm">Up to 1 hour</td>
-                        </tr>
-                        <tr class="border-b border-gray-100">
-                            <td class="p-3 font-semibold text-gray-700">AI Experience</td>
-                            <td class="p-3 text-sm">None</td>
-                            <td class="p-3 text-sm">Limited (ChatGPT)</td>
-                            <td class="p-3 text-sm">Sophisticated</td>
-                        </tr>
-                        <tr class="border-b border-gray-100">
-                            <td class="p-3 font-semibold text-gray-700">Trust Level</td>
-                            <td class="p-3 text-sm">Conditional</td>
-                            <td class="p-3 text-sm">100% or nothing</td>
-                            <td class="p-3 text-sm">High for analysis</td>
-                        </tr>
-                        <tr class="border-b border-gray-100">
-                            <td class="p-3 font-semibold text-gray-700">Top Priority</td>
-                            <td class="p-3 text-sm">Picking routes</td>
-                            <td class="p-3 text-sm">Single-screen view</td>
-                            <td class="p-3 text-sm">"Why" questions</td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 font-semibold text-gray-700">Unique Need</td>
-                            <td class="p-3 text-sm">Serial tracking</td>
-                            <td class="p-3 text-sm">Dutch language</td>
-                            <td class="p-3 text-sm">Visualization</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="ml-auto text-right text-white">
+            <div class="text-4xl font-bold">10-15 min</div>
+            <div class="text-sm opacity-75">per incident</div>
+        </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4 p-4">
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Profile</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li>• Manages daily WMS operations</li>
+                <li>• Coordinates office & warehouse</li>
+                <li>• 8 months WMS experience</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">AI Experience</p>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-empty"></span>
+                <span class="dot dot-empty"></span>
+                <span class="dot dot-empty"></span>
+                <span class="dot dot-empty"></span>
+                <p class="text-xs text-gray-500 mt-1">None</p>
             </div>
         </div>
-
-        <!-- Universal Needs -->
-        <div class="bg-blue-50 rounded-xl border-2 border-blue-500 p-6">
-            <h3 class="text-xl font-bold text-blue-900 mb-4">🎯 Universal Needs Across All Personas</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div class="bg-white p-3 rounded-lg shadow-sm">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-blue-600">✓</span>
-                        <span class="text-sm font-medium text-gray-800">Multi-screen data consolidation</span>
-                    </div>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-sm">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-blue-600">✓</span>
-                        <span class="text-sm font-medium text-gray-800">Business rule transparency</span>
-                    </div>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-sm">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-blue-600">✓</span>
-                        <span class="text-sm font-medium text-gray-800">Stock/serial accuracy</span>
-                    </div>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-sm">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-blue-600">✓</span>
-                        <span class="text-sm font-medium text-gray-800">Human-in-the-loop approval</span>
-                    </div>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-sm">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-blue-600">✓</span>
-                        <span class="text-sm font-medium text-gray-800">Internal-only data security</span>
-                    </div>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-sm">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-blue-600">✓</span>
-                        <span class="text-sm font-medium text-gray-800">10 min - 1 hour time savings potential</span>
-                    </div>
-                </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Goals</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-teal-700">✓</span> Optimize picking routes</li>
+                <li><span class="text-teal-700">✓</span> Track serial numbers accurately</li>
+                <li><span class="text-teal-700">✓</span> Reduce search time</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Trust Approach</p>
+                <p class="text-sm">Review first, then approve</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Frustrations</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-red-400">✗</span> 10-15 min finding serial numbers</li>
+                <li><span class="text-red-400">✗</span> Multi-screen navigation</li>
+                <li><span class="text-red-400">✗</span> Depends on developers</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Interaction</p>
+                <p class="text-sm">Text preferred in office</p>
             </div>
         </div>
     </div>
+    <div class="px-8 py-3 bg-gray-50 border-t">
+        <p class="text-sm text-gray-600 italic">"Finding serial numbers for assembled components can take 10-15 minutes sometimes."</p>
+    </div>
+    <div class="px-8 py-3 bg-gray-100 flex gap-2 flex-wrap">
+        <span class="text-xs font-bold text-gray-500 uppercase mr-2">Bo Agent Needs:</span>
+        <span class="tag">Serial tracking</span>
+        <span class="tag">Assembly traceability</span>
+        <span class="tag">Human approval</span>
+        <span class="tag">Internal-only</span>
+    </div>
+</div>
 
-    <script>
-        const personas = {
-            strategic: {
-                name: "Strategic Operations Manager",
-                subtitle: "Mark - I-team",
-                color: "purple",
-                avatar: "SO",
-                company: "Medium-sized company (10+ employees)",
-                industry: "Industrial equipment assembly",
-                experience: "7 months with WMS (New user)",
-                aiExperience: "None - First-time AI user",
-                quote: "I'd want to see the priorities AI suggests first. I would review and adjust them before implementing changes.",
-                goals: [
-                    "Optimize picking routes to reduce walking time",
-                    "Maintain accurate serial number tracking",
-                    "Improve reorder point accuracy",
-                    "Make strategic order processing decisions"
-                ],
-                painPoints: [
-                    { issue: "Serial number tracking", time: "10-15 min per search", severity: "high" },
-                    { issue: "Manual route planning", time: "Daily task", severity: "high" },
-                    { issue: "Discrepancy resolution", time: "Weekly reports", severity: "medium" },
-                    { issue: "Order prioritization", time: "Daily decisions", severity: "medium" }
-                ],
-                keyQuestions: [
-                    "Where are the serial numbers for this assembled machine and components?",
-                    "What is the optimal picking route considering heavy machines first?",
-                    "Why are there serial number discrepancies on this pallet?",
-                    "What should our reorder point be based on last 6 months?"
-                ],
-                trust: {
-                    level: "Conditional",
-                    description: "Wants to verify AI results against actual data",
-                    requirement: "Must be verifiable; AI suggests, human decides"
-                },
-                interaction: {
-                    mode: "Text-based",
-                    reason: "Doesn't want colleagues hearing AI conversations",
-                    device: "Computer, wrist scanners, handheld units"
-                },
-                metrics: {
-                    current: "10-15 min per serial search",
-                    target: "< 5 minutes",
-                    impact: "60% time reduction",
-                    frequency: "Multiple times per week",
-                    weeklySavings: "~90 minutes per week",
-                    roi: "15+ hours saved monthly"
-                }
-            },
-            realtime: {
-                name: "Real-Time Workflow Coordinator",
-                subtitle: "Marcel & Pierre - Mechan",
-                color: "green",
-                avatar: "RC",
-                company: "Medium distributor (15 employees)",
-                industry: "Agricultural machinery parts",
-                experience: "9-10 months with WMS (Building baseline)",
-                aiExperience: "Limited - Uses ChatGPT occasionally",
-                quote: "I would like to have an AI agent supporting my team manager. If it tells him 'Please stop picking and go to inbound,' it needs to make it feasible.",
-                goals: [
-                    "Get real-time workforce allocation guidance",
-                    "Access all order/product info in ONE screen",
-                    "Understand complete part tracing history",
-                    "Make data-driven daily operations decisions"
-                ],
-                painPoints: [
-                    { issue: "Multi-screen navigation", time: "10 min per search, 1-2x daily", severity: "critical" },
-                    { issue: "Inbound prioritization", time: "Daily bottleneck", severity: "high" },
-                    { issue: "Stock discrepancies", time: "Multiple times per day", severity: "high" },
-                    { issue: "No audit trail visibility", time: "Ongoing issue", severity: "medium" }
-                ],
-                keyQuestions: [
-                    "Show me everything about this order/product in ONE SCREEN",
-                    "What is the complete routing history of this part with document number?",
-                    "Should we prioritize inbound or outbound RIGHT NOW?",
-                    "Who made this change and when?",
-                    "Why was there an error? Where did the mistake happen?"
-                ],
-                trust: {
-                    level: "100% or nothing",
-                    description: "High trust IF internal-only and accurate",
-                    requirement: "No guessing - must be traceable and perfect"
-                },
-                interaction: {
-                    mode: "Text in Dutch",
-                    reason: "Avoid errors with non-native English warehouse staff",
-                    device: "Computers, Access database, WMS screens"
-                },
-                metrics: {
-                    current: "10-15 min daily on searches",
-                    target: "< 2 minutes",
-                    impact: "85% time reduction",
-                    frequency: "1-2 times per day",
-                    weeklySavings: "~65 minutes per week",
-                    roi: "4+ hours saved monthly"
-                },
-                scale: {
-                    stock: "€5M, 30,000 pieces",
-                    volume: "1,000-1,200 order lines daily",
-                    seasonality: "Peaks in spring/autumn"
-                }
-            },
-            intelligence: {
-                name: "Business Intelligence Analyst",
-                subtitle: "Robbert - Sonic",
-                color: "orange",
-                avatar: "BI",
-                company: "Growing mid-sized distributor",
-                industry: "Industrial equipment (multi-country)",
-                experience: "Experienced - Previous SAP background",
-                aiExperience: "Sophisticated - Expects visualization",
-                quote: "The topics that come back every time: analyzation on WHY is that happening. That's basically the bottom line of what could help.",
-                goals: [
-                    "Understand WHY system makes certain decisions",
-                    "Reduce root cause analysis time",
-                    "Enable self-service for team leaders",
-                    "Support international sales teams",
-                    "Free developer time from routine questions"
-                ],
-                painPoints: [
-                    { issue: "ATP root cause analysis", time: "Up to 1 hour per investigation", severity: "critical" },
-                    { issue: "Business rule opacity", time: "Developer dependency", severity: "critical" },
-                    { issue: "Pick sequence inefficiency", time: "Daily customer complaints", severity: "high" },
-                    { issue: "Limited staging space", time: "2-4 pallets max per dock", severity: "medium" }
-                ],
-                keyQuestions: [
-                    "WHY did this happen? What caused this result?",
-                    "What happened to cause this ATP change? Who changed priority?",
-                    "Why did order #5 get shipment lines 2 and 3?",
-                    "Why are bottles split across different pallets?",
-                    "Why was delivery date pushed to December? (for international support)",
-                    "How many pallet locations do I have left?"
-                ],
-                trust: {
-                    level: "High for analysis",
-                    description: "Trusts AI for explanation and understanding",
-                    requirement: "Must provide audit trail through data"
-                },
-                interaction: {
-                    mode: "Text + Visual (Flow charts)",
-                    reason: "Visualization essential for logistics context",
-                    device: "Monday.com, WMS, flow chart tools"
-                },
-                metrics: {
-                    current: "Up to 1 hour for ATP analysis",
-                    target: "< 10 minutes",
-                    impact: "90% time reduction",
-                    frequency: "Several times per week",
-                    weeklySavings: "~5 hours per week",
-                    roi: "20+ hours saved monthly"
-                },
-                advanced: {
-                    visualization: "Flow charts showing order progression",
-                    multiCountry: "France, Germany support needed",
-                    systemCompare: "Knows Istia limitations vs SAP"
-                }
-            }
-        };
+<!-- Persona 2: Pieter -->
+<div class="persona max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="header-gradient px-8 py-4 flex items-center gap-6">
+        <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=200&h=200&fit=crop&crop=face" class="w-24 h-24 rounded-full border-4 border-white object-cover">
+        <div class="text-white">
+            <h2 class="text-3xl font-bold">Pieter van den Berg, 50</h2>
+            <p class="text-xl opacity-90">Business Analyst</p>
+            <p class="text-sm opacity-75">Mechan • Agricultural Machinery Parts</p>
+        </div>
+        <div class="ml-auto text-right text-white">
+            <div class="text-4xl font-bold">15 min</div>
+            <div class="text-sm opacity-75">per day</div>
+        </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4 p-4">
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Profile</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li>• Builds KPI dashboards</li>
+                <li>• Supports warehouse planning</li>
+                <li>• 16 months WMS experience</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">AI Experience</p>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-empty"></span>
+                <span class="dot dot-empty"></span>
+                <span class="dot dot-empty"></span>
+                <p class="text-xs text-gray-500 mt-1">Limited (ChatGPT)</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Goals</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-teal-700">✓</span> Single-screen data view</li>
+                <li><span class="text-teal-700">✓</span> Real-time priority guidance</li>
+                <li><span class="text-teal-700">✓</span> Reduce manual data collection</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Trust Approach</p>
+                <p class="text-sm">100% accuracy or nothing</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Frustrations</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-red-400">✗</span> Switch between 3-4 screens</li>
+                <li><span class="text-red-400">✗</span> Inbound vs outbound conflicts</li>
+                <li><span class="text-red-400">✗</span> Manual Access database work</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Interaction</p>
+                <p class="text-sm">Text in Dutch language</p>
+            </div>
+        </div>
+    </div>
+    <div class="px-8 py-3 bg-gray-50 border-t">
+        <p class="text-sm text-gray-600 italic">"If I can ask one question and it will go through three or four screens—that would be the most benefit."</p>
+    </div>
+    <div class="px-8 py-3 bg-gray-100 flex gap-2 flex-wrap">
+        <span class="text-xs font-bold text-gray-500 uppercase mr-2">Bo Agent Needs:</span>
+        <span class="tag">Multi-screen query</span>
+        <span class="tag">Priority switching</span>
+        <span class="tag">Dutch language</span>
+        <span class="tag">Data aggregation</span>
+    </div>
+</div>
 
-        let currentPersona = 'strategic';
+<!-- Persona 3: Thomas -->
+<div class="persona max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="header-gradient px-8 py-4 flex items-center gap-6">
+        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=face" class="w-24 h-24 rounded-full border-4 border-white object-cover">
+        <div class="text-white">
+            <h2 class="text-3xl font-bold">Thomas Bakker, 31</h2>
+            <p class="text-xl opacity-90">Business Process Owner</p>
+            <p class="text-sm opacity-75">Sonic • Audio Equipment</p>
+        </div>
+        <div class="ml-auto text-right text-white">
+            <div class="text-4xl font-bold">1 hour</div>
+            <div class="text-sm opacity-75">complex investigations</div>
+        </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4 p-4">
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Profile</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li>• Manages warehouse operations</li>
+                <li>• Investigates system issues</li>
+                <li>• Experienced WMS user</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">AI Experience</p>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-empty"></span>
+                <p class="text-xs text-gray-500 mt-1">Sophisticated</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Goals</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-teal-700">✓</span> Understand why things happen</li>
+                <li><span class="text-teal-700">✓</span> Quick root cause analysis</li>
+                <li><span class="text-teal-700">✓</span> Track who changed what</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Trust Approach</p>
+                <p class="text-sm">High for analysis tasks</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Frustrations</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-red-400">✗</span> Up to 1 hour investigations</li>
+                <li><span class="text-red-400">✗</span> Data intermingled in screens</li>
+                <li><span class="text-red-400">✗</span> No clear user attribution</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Interaction</p>
+                <p class="text-sm">Visual explanations</p>
+            </div>
+        </div>
+    </div>
+    <div class="px-8 py-3 bg-gray-50 border-t">
+        <p class="text-sm text-gray-600 italic">"Why is that happening? That's basically the bottom line. Sometimes it takes an hour to find the real reason."</p>
+    </div>
+    <div class="px-8 py-3 bg-gray-100 flex gap-2 flex-wrap">
+        <span class="text-xs font-bold text-gray-500 uppercase mr-2">Bo Agent Needs:</span>
+        <span class="tag">Root cause analysis</span>
+        <span class="tag">User attribution</span>
+        <span class="tag">Business rules</span>
+        <span class="tag">Visualization</span>
+    </div>
+</div>
 
-        const colorClasses = {
-            purple: {
-                bg: 'bg-purple-50',
-                border: 'border-purple-500',
-                text: 'text-purple-700',
-                button: 'bg-purple-600 hover:bg-purple-700',
-                light: 'bg-purple-100',
-                dark: 'bg-purple-600'
-            },
-            green: {
-                bg: 'bg-green-50',
-                border: 'border-green-500',
-                text: 'text-green-700',
-                button: 'bg-green-600 hover:bg-green-700',
-                light: 'bg-green-100',
-                dark: 'bg-green-600'
-            },
-            orange: {
-                bg: 'bg-orange-50',
-                border: 'border-orange-500',
-                text: 'text-orange-700',
-                button: 'bg-orange-600 hover:bg-orange-700',
-                light: 'bg-orange-100',
-                dark: 'bg-orange-600'
-            }
-        };
+<!-- Persona 4: Emma -->
+<div class="persona max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="header-gradient px-8 py-4 flex items-center gap-6">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face" class="w-24 h-24 rounded-full border-4 border-white object-cover">
+        <div class="text-white">
+            <h2 class="text-3xl font-bold">Emma Jansen, 35</h2>
+            <p class="text-xl opacity-90">Process Engineer</p>
+            <p class="text-sm opacity-75">FittinQ • Distribution & Logistics</p>
+        </div>
+        <div class="ml-auto text-right text-white">
+            <div class="text-4xl font-bold">30+ min</div>
+            <div class="text-sm opacity-75">Excel preparation</div>
+        </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4 p-4">
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Profile</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li>• Analyzes warehouse processes</li>
+                <li>• Calculates replenishment settings</li>
+                <li>• Works across multiple systems</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">AI Experience</p>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-filled"></span>
+                <span class="dot dot-empty"></span>
+                <span class="dot dot-empty"></span>
+                <p class="text-xs text-gray-500 mt-1">Moderate</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Goals</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-teal-700">✓</span> Automate calculations</li>
+                <li><span class="text-teal-700">✓</span> Detect bottlenecks early</li>
+                <li><span class="text-teal-700">✓</span> Reduce Excel dependency</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Trust Approach</p>
+                <p class="text-sm">Verify before use</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-3">Frustrations</h3>
+            <ul class="text-sm text-gray-700 space-y-2">
+                <li><span class="text-red-400">✗</span> Manual data downloads</li>
+                <li><span class="text-red-400">✗</span> Excel formula building</li>
+                <li><span class="text-red-400">✗</span> Late bottleneck detection</li>
+            </ul>
+            <div class="mt-4 pt-3 border-t">
+                <p class="text-xs text-gray-500 mb-1">Interaction</p>
+                <p class="text-sm">Explainable outputs</p>
+            </div>
+        </div>
+    </div>
+    <div class="px-8 py-3 bg-gray-50 border-t">
+        <p class="text-sm text-gray-600 italic">"Why do I have to make these calculations myself when all the data is already in the system?"</p>
+    </div>
+    <div class="px-8 py-3 bg-gray-100 flex gap-2 flex-wrap">
+        <span class="text-xs font-bold text-gray-500 uppercase mr-2">Bo Agent Needs:</span>
+        <span class="tag">Auto calculations</span>
+        <span class="tag">Bottleneck alerts</span>
+        <span class="tag">Multi-system access</span>
+        <span class="tag">Explainable AI</span>
+    </div>
+</div>
 
-        function renderPersonaButtons() {
-            const selector = document.getElementById('persona-selector');
-            selector.innerHTML = Object.entries(personas).map(([key, persona]) => {
-                const colors = colorClasses[persona.color];
-                const isSelected = currentPersona === key;
-                const logoUrls = {
-                    strategic: 'https://www.i-teamglobal.com/nl-nl/typo3conf/ext/site_package/Resources/Public/Images/i-team_logo.svg',
-                    realtime: 'https://www.mechan.nl/typo3conf/ext/site_mechan/Resources/Public/Images/Logo-mechan.svg',
-                    intelligence: 'https://www.sonic-equipment.com/static/img/sonic-logo.svg'
-                };
-                return `
-                    <button onclick="selectPersona('${key}')" 
-                            class="persona-card p-6 rounded-xl border-2 transition-all ${
-                                isSelected 
-                                    ? `${colors.bg} ${colors.border} selected` 
-                                    : 'bg-white border-gray-200 hover:border-gray-300'
-                            }">
-                        <div class="w-24 h-16 flex items-center justify-center mx-auto mb-3">
-                            <img src="${logoUrls[key]}" alt="${persona.subtitle}" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="${colors.dark} w-16 h-16 rounded-full text-white items-center justify-center text-2xl font-bold" style="display: none;">
-                                ${persona.avatar}
-                            </div>
-                        </div>
-                        <h3 class="font-bold text-lg ${isSelected ? colors.text : 'text-gray-900'}">
-                            ${persona.name}
-                        </h3>
-                        <p class="text-sm text-gray-600 mt-1">${persona.subtitle}</p>
-                    </button>
-                `;
-            }).join('');
-        }
+<script>
+function showPersona(index) {
+    document.querySelectorAll('.persona').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active-tab'));
+    document.querySelectorAll('.persona')[index].classList.add('active');
+    document.querySelectorAll('.tab')[index].classList.add('active-tab');
+}
+</script>
 
-        function renderPersonaDetails() {
-            const persona = personas[currentPersona];
-            const colors = colorClasses[persona.color];
-            const display = document.getElementById('persona-display');
-            
-            const severityColor = {
-                critical: 'bg-red-100 text-red-700',
-                high: 'bg-orange-100 text-orange-700',
-                medium: 'bg-yellow-100 text-yellow-700'
-            };
-
-            const logoUrls = {
-                strategic: 'https://www.i-teamglobal.com/nl-nl/typo3conf/ext/site_package/Resources/Public/Images/i-team_logo.svg',
-                realtime: 'https://www.mechan.nl/typo3conf/ext/site_mechan/Resources/Public/Images/Logo-mechan.svg',
-                intelligence: 'https://www.sonic-equipment.com/static/img/sonic-logo.svg'
-            };
-
-            display.innerHTML = `
-                <div class="${colors.bg} rounded-xl border-2 ${colors.border} p-8 mb-6">
-                    <div class="flex items-start space-x-6 mb-6">
-                        <div class="w-32 h-24 flex items-center justify-center flex-shrink-0 bg-white rounded-lg p-3">
-                            <img src="${logoUrls[currentPersona]}" alt="${persona.subtitle}" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="${colors.dark} w-24 h-24 rounded-full text-white items-center justify-center text-4xl font-bold" style="display: none;">
-                                ${persona.avatar}
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <h2 class="text-3xl font-bold text-gray-900 mb-2">${persona.name}</h2>
-                            <p class="text-xl ${colors.text} font-semibold mb-3">${persona.subtitle}</p>
-                            <div class="grid grid-cols-2 gap-4 text-sm">
-                                <div><span class="font-semibold text-gray-700">Company:</span> ${persona.company}</div>
-                                <div><span class="font-semibold text-gray-700">Industry:</span> ${persona.industry}</div>
-                                <div><span class="font-semibold text-gray-700">WMS Experience:</span> ${persona.experience}</div>
-                                <div><span class="font-semibold text-gray-700">AI Experience:</span> ${persona.aiExperience}</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="${colors.light} p-4 rounded-lg border-l-4 ${colors.border} mb-6">
-                        <p class="text-gray-700 italic">"${persona.quote}"</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div class="space-y-6">
-                            <!-- Goals -->
-                            <div class="bg-white rounded-lg p-5 shadow">
-                                <h3 class="text-xl font-bold text-gray-900 mb-4">🎯 Goals & Motivations</h3>
-                                <ul class="space-y-2">
-                                    ${persona.goals.map(goal => `
-                                        <li class="flex items-start space-x-2">
-                                            <span class="${colors.text}">✓</span>
-                                            <span class="text-gray-700 text-sm">${goal}</span>
-                                        </li>
-                                    `).join('')}
-                                </ul>
-                            </div>
-
-                            <!-- Pain Points -->
-                            <div class="bg-white rounded-lg p-5 shadow">
-                                <h3 class="text-xl font-bold text-gray-900 mb-4">⚠️ Pain Points</h3>
-                                <div class="space-y-3">
-                                    ${persona.painPoints.map(pain => `
-                                        <div class="border-l-4 border-red-500 pl-3 py-2">
-                                            <div class="flex items-center justify-between mb-1">
-                                                <span class="font-semibold text-gray-900">${pain.issue}</span>
-                                                <span class="text-xs px-2 py-1 rounded ${severityColor[pain.severity]}">
-                                                    ${pain.severity}
-                                                </span>
-                                            </div>
-                                            <p class="text-sm text-gray-600">${pain.time}</p>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-
-                            <!-- Trust -->
-                            <div class="bg-white rounded-lg p-5 shadow">
-                                <h3 class="text-xl font-bold text-gray-900 mb-4">🛡️ Trust & Security</h3>
-                                <div class="space-y-3">
-                                    <div>
-                                        <span class="text-sm font-semibold text-gray-700">Trust Level:</span>
-                                        <p class="text-lg font-bold ${colors.text}">${persona.trust.level}</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-sm font-semibold text-gray-700">Description:</span>
-                                        <p class="text-sm text-gray-700">${persona.trust.description}</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-sm font-semibold text-gray-700">Requirement:</span>
-                                        <p class="text-sm text-gray-700">${persona.trust.requirement}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="space-y-6">
-                            <!-- Key Questions -->
-                            <div class="bg-white rounded-lg p-5 shadow">
-                                <h3 class="text-xl font-bold text-gray-900 mb-4">💬 Key Questions for AI</h3>
-                                <div class="space-y-3">
-                                    ${persona.keyQuestions.map((q, idx) => `
-                                        <div class="${colors.light} p-3 rounded-lg border ${colors.border}">
-                                            <p class="text-sm text-gray-800 font-medium">
-                                                <span class="${colors.text} font-bold mr-2">Q${idx + 1}:</span>
-                                                ${q}
-                                            </p>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-
-                            <!-- Interaction -->
-                            <div class="bg-white rounded-lg p-5 shadow">
-                                <h3 class="text-xl font-bold text-gray-900 mb-4">👤 Interaction Preferences</h3>
-                                <div class="space-y-3">
-                                    <div class="${colors.light} p-3 rounded-lg">
-                                        <span class="text-sm font-semibold text-gray-700">Mode:</span>
-                                        <p class="text-lg font-bold ${colors.text}">${persona.interaction.mode}</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-sm font-semibold text-gray-700">Reason:</span>
-                                        <p class="text-sm text-gray-700">${persona.interaction.reason}</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-sm font-semibold text-gray-700">Device:</span>
-                                        <p class="text-sm text-gray-700">${persona.interaction.device}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            ${persona.scale ? `
-                                <div class="bg-white rounded-lg p-5 shadow">
-                                    <h3 class="text-lg font-bold text-gray-900 mb-3">Operations Scale</h3>
-                                    <div class="grid grid-cols-2 gap-3 text-sm">
-                                        <div class="${colors.light} p-2 rounded">
-                                            <span class="font-semibold">Stock:</span> ${persona.scale.stock}
-                                        </div>
-                                        <div class="${colors.light} p-2 rounded">
-                                            <span class="font-semibold">Volume:</span> ${persona.scale.volume}
-                                        </div>
-                                        <div class="${colors.light} p-2 rounded col-span-2">
-                                            <span class="font-semibold">Seasonality:</span> ${persona.scale.seasonality}
-                                        </div>
-                                    </div>
-                                </div>
-                            ` : ''}
-
-                            ${persona.advanced ? `
-                                <div class="bg-white rounded-lg p-5 shadow">
-                                    <h3 class="text-lg font-bold text-gray-900 mb-3">Advanced Needs</h3>
-                                    <div class="space-y-2 text-sm">
-                                        <div class="${colors.light} p-2 rounded">
-                                            <span class="font-semibold">Visualization:</span> ${persona.advanced.visualization}
-                                        </div>
-                                        <div class="${colors.light} p-2 rounded">
-                                            <span class="font-semibold">Multi-Country:</span> ${persona.advanced.multiCountry}
-                                        </div>
-                                        <div class="${colors.light} p-2 rounded">
-                                            <span class="font-semibold">Experience:</span> ${persona.advanced.systemCompare}
-                                        </div>
-                                    </div>
-                                </div>
-                            ` : ''}
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function selectPersona(key) {
-            currentPersona = key;
-            renderPersonaButtons();
-            renderPersonaDetails();
-        }
-
-        // Initial render
-        renderPersonaButtons();
-        renderPersonaDetails();
-    </script>
 </body>
 </html>

@@ -29,7 +29,7 @@
 <!-- Persona 1: Jan -->
 <div class="persona active max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
     <div class="header-gradient px-8 py-4 flex items-center gap-6">
-        <img src="https://images.unsplash.com/photo-1587837073080-448bc6a2329b?w=200&h=200&fit=crop&crop=face" class="w-24 h-24 rounded-full border-4 border-white object-cover">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face" class="w-24 h-24 rounded-full border-4 border-white object-cover">
         <div class="text-white">
             <h2 class="text-3xl font-bold">Jan de Vries, 50</h2>
             <p class="text-xl opacity-90">Operations Manager</p>
@@ -304,13 +304,9 @@
 
 <script>
 function showPersona(index) {
-    // Hide all personas
     document.querySelectorAll('.persona').forEach(p => p.classList.remove('active'));
-    // Remove active from all tabs
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active-tab'));
-    // Show selected persona
     document.querySelectorAll('.persona')[index].classList.add('active');
-    // Activate selected tab
     document.querySelectorAll('.tab')[index].classList.add('active-tab');
 }
 </script>
